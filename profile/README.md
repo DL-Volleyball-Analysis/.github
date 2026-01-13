@@ -5,7 +5,7 @@
 
 A comprehensive AI-powered system for analyzing volleyball matches, featuring ball tracking, action recognition, and player tracking.
 
-## 🏗️ System Architecture
+## System Architecture
 
 ![System Architecture](profile/system_architecture.png)
 
@@ -18,7 +18,7 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 | [jersey-number-detection](https://github.com/DL-Volleyball-Analysis/jersey-number-detection) | Jersey number OCR detection |
 | [capstone-report](https://github.com/DL-Volleyball-Analysis/capstone-report) | Academic report (LaTeX) |
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.1-red?logo=pytorch)
@@ -26,12 +26,12 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.95-009688?logo=fastapi)
 ![YOLO](https://img.shields.io/badge/YOLO-v11-00FFFF)
 
-## 📊 Features
+## Features
 
-- 🏐 **Ball Tracking** - VballNet (U-Net based) with 79.5% accuracy
-- 🎯 **Action Recognition** - YOLOv11m with 94.49% mAP@0.5
-- 👥 **Player Tracking** - YOLOv8 + Norfair multi-object tracking
-- 🔢 **Jersey Number OCR** - Automatic jersey number detection
+- **Ball Tracking** - VballNet (U-Net based) with 79.5% accuracy
+- **Action Recognition** - YOLOv11m with 94.49% mAP@0.5
+- **Player Tracking** - YOLOv8 + Norfair multi-object tracking
+- **Jersey Number OCR** - Automatic jersey number detection
 
 ---
 
