@@ -9,6 +9,14 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 
 ---
 
+## Presentation | 專題簡報
+
+[![Canva Presentation](https://img.shields.io/badge/Canva-%E5%B0%88%E9%A1%8C%E7%B0%A1%E5%A0%B1-00C4CC?style=for-the-badge&logo=canva&logoColor=white)](https://www.canva.com/design/DAG7EZ2BhWw/txwh6VE12fYEakm5bF2sdg/view)
+
+[View Full Presentation | 查看完整簡報](https://www.canva.com/design/DAG7EZ2BhWw/txwh6VE12fYEakm5bF2sdg/view)
+
+---
+
 ## System Architecture | 系統架構
 
 ![System Architecture](system_architecture.png)
@@ -134,6 +142,9 @@ WS   /ws/{task_id}    - Real-time progress | 即時進度
 ---
 
 ## Screenshots | 系統截圖
+
+### Landing Page | 首頁
+![Landing Page](landing.png)
 
 ### Dashboard | 儀表板
 ![Dashboard](dashboard.png)
