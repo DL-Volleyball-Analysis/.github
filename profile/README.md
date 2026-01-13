@@ -7,15 +7,15 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 
 ## System Architecture
 
-![System Architecture](profile/system_architecture.png)
+![System Architecture](system_architecture.png)
 
 ### AI Core Processing
 
-![AI Core](profile/system_architecture_ai_core.png)
+![AI Core](system_architecture_ai_core.png)
 
 ### Backend Architecture
 
-![Backend](profile/system_architecture_backend.png)
+![Backend](system_architecture_backend.png)
 
 ## 🏐 Projects
 
@@ -44,10 +44,10 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 ## Screenshots
 
 ### Dashboard
-![Dashboard](profile/dashboard.png)
+![Dashboard](dashboard.png)
 
 ### Video Analysis
-![Video Analysis](profile/play_sector.png)
+![Video Analysis](play_sector.png)
 
 ---
 
