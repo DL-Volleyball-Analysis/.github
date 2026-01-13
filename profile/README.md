@@ -9,6 +9,14 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 
 ![System Architecture](profile/system_architecture.png)
 
+### AI Core Processing
+
+![AI Core](profile/system_architecture_ai_core.png)
+
+### Backend Architecture
+
+![Backend](profile/system_architecture_backend.png)
+
 ## 🏐 Projects
 
 | Repository | Description |
@@ -32,6 +40,14 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 - **Action Recognition** - YOLOv11m with 94.49% mAP@0.5
 - **Player Tracking** - YOLOv8 + Norfair multi-object tracking
 - **Jersey Number OCR** - Automatic jersey number detection
+
+## Screenshots
+
+### Dashboard
+![Dashboard](profile/dashboard.png)
+
+### Video Analysis
+![Video Analysis](profile/play_sector.png)
 
 ---
 
