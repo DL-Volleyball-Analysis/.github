@@ -143,8 +143,8 @@ WS   /ws/{task_id}    - Real-time progress | 即時進度
 
 ## Screenshots | 系統截圖
 
-### Landing Page | 首頁
-![Landing Page](landing.png)
+### Court Detection and Ball Landing | 場地偵測與落點判斷
+![Court Detection](landing.png)
 
 ### Dashboard | 儀表板
 ![Dashboard](dashboard.png)
