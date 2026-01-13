@@ -134,8 +134,17 @@ WS   /ws/{task_id}    - Real-time progress | 即時進度
 ### Dashboard | 儀表板
 ![Dashboard](dashboard.png)
 
-### Video Analysis | 影片分析
+### Video Analysis with Play Selector | 影片分析與回合選擇
 ![Video Analysis](play_sector.png)
+
+### Action Detection | 動作偵測
+![Action Boxes](action_boxes.png)
+
+### Player Detection | 球員偵測
+![Player Detection](player_detection(boxes).png)
+
+### Player Statistics | 球員統計
+![Player Stats](player_stats.png)
 
 ---
 
