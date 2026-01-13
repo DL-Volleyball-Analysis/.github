@@ -42,6 +42,8 @@ VballNet uses **temporal sequence input** to capture ball motion patterns. A 9-f
 
 VballNet 使用**時間序列輸入**捕捉球的運動模式。9 幀緩衝區捕捉軌跡資訊以提高檢測準確度。
 
+![U-Net Architecture](u-net-architecture.png)
+
 ### Action Recognition | 動作識別
 
 | Specification | Value |
@@ -55,6 +57,8 @@ VballNet 使用**時間序列輸入**捕捉球的運動模式。9 幀緩衝區�
 Training configuration: 200 epochs, batch size 12-20, image size 640×640, SGD optimizer.
 
 訓練配置：200 輪，批次大小 12-20，圖像尺寸 640×640，SGD 優化器。
+
+![YOLOv11 Architecture](yolov11_architecture.jpg)
 
 ### Player Tracking | 球員追蹤
 
