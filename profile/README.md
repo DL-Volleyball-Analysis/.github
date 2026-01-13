@@ -7,26 +7,102 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 
 一個綜合性的 AI 排球比賽分析系統，包含球追蹤、動作識別和球員追蹤功能。
 
+---
+
 ## System Architecture | 系統架構
 
 ![System Architecture](system_architecture.png)
 
-### AI Core Processing | AI 核心處理
+The system adopts a **front-end and back-end separation architecture**, with clear module responsibilities:
+
+系統採用**前後端分離架構**，各模組職責明確：
+
+- **Frontend** - React 18 + TypeScript web interface | React 18 + TypeScript 網頁介面
+- **Backend** - FastAPI RESTful API + WebSocket | FastAPI RESTful API + WebSocket 即時通訊
+- **AI Core** - PyTorch + YOLO deep learning pipeline | PyTorch + YOLO 深度學習管線
+- **Database** - SQLite for local, PostgreSQL for production | SQLite 本地端，PostgreSQL 生產環境
+
+---
+
+## AI Processing Pipeline | AI 處理管線
 
 ![AI Core](system_architecture_ai_core.png)
 
-### Backend Architecture | 後端架構
+### Ball Tracking | 球追蹤
+
+| Specification | Value |
+|---------------|-------|
+| Model | VballNet (U-Net based) |
+| Input | 9-frame grayscale sequence (1, 9, 288, 512) |
+| Output | Heatmap with ball location |
+| Format | ONNX Runtime |
+| Accuracy | 79.5% |
+
+VballNet uses **temporal sequence input** to capture ball motion patterns. A 9-frame buffer captures trajectory information for improved detection accuracy.
+
+VballNet 使用**時間序列輸入**捕捉球的運動模式。9 幀緩衝區捕捉軌跡資訊以提高檢測準確度。
+
+### Action Recognition | 動作識別
+
+| Specification | Value |
+|---------------|-------|
+| Model | YOLOv11m |
+| Classes | 5 (serve, spike, block, receive, set) |
+| Dataset | 24,806 images |
+| mAP@0.5 | 94.49% |
+| Confidence Threshold | ≥60% |
+
+Training configuration: 200 epochs, batch size 12-20, image size 640×640, SGD optimizer.
+
+訓練配置：200 輪，批次大小 12-20，圖像尺寸 640×640，SGD 優化器。
+
+### Player Tracking | 球員追蹤
+
+| Specification | Value |
+|---------------|-------|
+| Detection Model | YOLOv8 |
+| Tracking | Norfair (Euclidean distance) |
+| Consistency | 87.6% |
+| Confidence Threshold | ≥50% |
+
+Norfair parameters: `distance_threshold=100`, `initialization_delay=3`, `hit_counter_max=15`
+
+---
+
+## Backend Architecture | 後端架構
 
 ![Backend](system_architecture_backend.png)
 
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| API Framework | FastAPI | RESTful endpoints |
+| Real-time | WebSocket | Progress updates |
+| Database | SQLite/PostgreSQL | Data persistence |
+| Task Queue | Celery + Redis | Background processing |
+| Video Streaming | Range requests | Efficient playback |
+
+### API Endpoints | API 端點
+
+```
+POST /upload          - Upload video | 上傳影片
+POST /analyze/{id}    - Start analysis | 開始分析
+GET  /results/{id}    - Get results | 取得結果
+GET  /play/{id}       - Stream video | 串流影片
+WS   /ws/{task_id}    - Real-time progress | 即時進度
+```
+
+---
+
 ## Projects | 專案
 
-| Repository | Description | 說明 |
+| Repository | Description | Tech |
 |------------|-------------|------|
-| [volleyball-analysis-webapp](https://github.com/DL-Volleyball-Analysis/volleyball-analysis-webapp) | Main web application | 主網頁應用程式 |
-| [action-recognition-yolov11](https://github.com/DL-Volleyball-Analysis/action-recognition-yolov11) | Action recognition training | 動作識別訓練 |
-| [jersey-number-detection](https://github.com/DL-Volleyball-Analysis/jersey-number-detection) | Jersey number OCR | 球衣號碼識別 |
-| [capstone-report](https://github.com/DL-Volleyball-Analysis/capstone-report) | Academic report (LaTeX) | 專題報告 |
+| [volleyball-analysis-webapp](https://github.com/DL-Volleyball-Analysis/volleyball_analysis_webapp) | Main web application | React + FastAPI |
+| [action-recognition-yolov11](https://github.com/DL-Volleyball-Analysis/action-recognition-yolov11) | Action recognition training | YOLOv11 |
+| [jersey-number-detection](https://github.com/DL-Volleyball-Analysis/jersey-number-detection) | Jersey number OCR | YOLOv8 |
+| [capstone-report](https://github.com/DL-Volleyball-Analysis/capstone-report) | Academic report | LaTeX |
+
+---
 
 ## Tech Stack | 技術棧
 
@@ -35,23 +111,61 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 ![React](https://img.shields.io/badge/React-18.2-61DAFB?logo=react)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.95-009688?logo=fastapi)
 ![YOLO](https://img.shields.io/badge/YOLO-v11-00FFFF)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.9-blue?logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-3.x-38B2AC?logo=tailwindcss)
 
-## Features | 功能
+---
 
-| Feature | Performance | 功能 | 效能 |
-|---------|-------------|------|------|
-| Ball Tracking | 79.5% accuracy | 球追蹤 | 79.5% 準確率 |
-| Action Recognition | 94.49% mAP@0.5 | 動作識別 | 94.49% mAP@0.5 |
-| Player Tracking | 87.6% consistency | 球員追蹤 | 87.6% 一致性 |
-| Jersey Number OCR | 68.5% accuracy | 球衣號碼識別 | 68.5% 準確率 |
+## Performance Summary | 效能總結
 
-## Screenshots | 截圖
+| Module | Metric | Value |
+|--------|--------|-------|
+| Ball Tracking | Accuracy | 79.5% |
+| Action Recognition | mAP@0.5 | 94.49% |
+| Player Tracking | Consistency | 87.6% |
+| Jersey Number OCR | Accuracy | 68.5% |
+| Processing Speed | FPS | ~7.91 |
+| Test Coverage | Overall | 59% |
+
+---
+
+## Screenshots | 系統截圖
 
 ### Dashboard | 儀表板
 ![Dashboard](dashboard.png)
 
 ### Video Analysis | 影片分析
 ![Video Analysis](play_sector.png)
+
+---
+
+## System Requirements | 系統需求
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| CPU | Intel i5 | Intel i7+ |
+| RAM | 8GB | 16GB |
+| GPU | None (CPU mode) | NVIDIA GTX 1060+ |
+| Storage | 20GB | 50GB SSD |
+
+---
+
+## Quick Start | 快速開始
+
+```bash
+# Clone main repo | 複製主專案
+git clone https://github.com/DL-Volleyball-Analysis/volleyball_analysis_webapp.git
+
+# Install dependencies | 安裝依賴
+pip install -r requirements.txt
+cd frontend && npm install
+
+# Start services | 啟動服務
+cd backend && uvicorn main:app --reload  # Backend
+cd frontend && npm start                  # Frontend
+```
+
+Access | 存取: http://localhost:3000
 
 ---
 
