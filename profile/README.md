@@ -19,9 +19,9 @@ A comprehensive AI-powered system for analyzing volleyball matches, featuring ba
 
 ## Website | 展示網站
 
-[![Website](https://img.shields.io/badge/Website-VolleyVision%20AI-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dl-volleyball-analysis.github.io/volleyball_analysis_webapp/)
+[![Website](https://img.shields.io/badge/Website-VolleyVision%20AI-0033A0?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dl-volleyball-analysis.github.io/volleyvision-website/)
 
-[Visit Website | 造訪網站](https://dl-volleyball-analysis.github.io/volleyball_analysis_webapp/)
+[Visit Website | 造訪網站](https://dl-volleyball-analysis.github.io/volleyvision-website/)
 
 ---
 
@@ -118,6 +118,8 @@ WS   /ws/{task_id}    - Real-time progress | 即時進度
 | Repository | Description | Tech |
 |------------|-------------|------|
 | [volleyball-analysis-webapp](https://github.com/DL-Volleyball-Analysis/volleyball_analysis_webapp) | Main web application | React + FastAPI |
+| [volleyvision-website](https://github.com/DL-Volleyball-Analysis/volleyvision-website) | Landing page website | Next.js + Tailwind |
+| [volleyball-court-detection](https://github.com/DL-Volleyball-Analysis/volleyball-court-detection) | Court detection and ball landing | VballNet + ONNX |
 | [action-recognition-yolov11](https://github.com/DL-Volleyball-Analysis/action-recognition-yolov11) | Action recognition training | YOLOv11 |
 | [jersey-number-detection](https://github.com/DL-Volleyball-Analysis/jersey-number-detection) | Jersey number OCR | YOLOv8 |
 | [capstone-report](https://github.com/DL-Volleyball-Analysis/capstone-report) | Academic report | LaTeX |
