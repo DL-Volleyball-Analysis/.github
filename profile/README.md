@@ -26,9 +26,18 @@ capstone at National Taiwan Ocean University; the system is being rebuilt around
 | [volleyvision-website](https://github.com/DL-Volleyball-Analysis/volleyvision-website) | public landing page |
 | [capstone-report](https://github.com/DL-Volleyball-Analysis/capstone-report) | capstone report (LaTeX, Chinese and English); graded version under the `capstone-final` tag |
 
-Archived, read-only with full history: `volleyball_analysis_webapp`, `action-recognition-yolov11` and
-`jersey-number-detection` (now folders of volleyball-analysis), `volleyball-prototype` and
-`volleyball-court-detection` (superseded).
+### Capstone archive (read-only)
+
+The first version of the system, kept with its history. Each README states what it did, its results with
+corrections, and where the code lives now.
+
+| Repository | What it was |
+|---|---|
+| [capstone-webapp](https://github.com/DL-Volleyball-Analysis/capstone-webapp) | first web app (FastAPI + React); rewritten as `volleyball-analysis/webapp` |
+| [capstone-action-recognition](https://github.com/DL-Volleyball-Analysis/capstone-action-recognition) | YOLOv11m action recognition; now `training/action-recognition` |
+| [capstone-jersey-numbers](https://github.com/DL-Volleyball-Analysis/capstone-jersey-numbers) | YOLOv8 jersey digits; mislabelled training data found, retraining planned |
+| [capstone-court-detection](https://github.com/DL-Volleyball-Analysis/capstone-court-detection) | landing and IN/OUT with a hand-marked court; replaced by learned court registration |
+| [capstone-prototype](https://github.com/DL-Volleyball-Analysis/capstone-prototype) | early prototype adapted from VolleyVision |
 
 ## What is measured | 量測結果
 
