@@ -47,25 +47,13 @@ Every number states its kind of evidence. Details: [docs/results](https://github
 |---|---|---|
 | Court registration (14 keypoints) | 0.49 m median court-position error on held-out images; wrong courts flagged by a floor-net check | labelled test images |
 | Player tracking (YOLO26s + BoT-SORT) | IDF1 0.484, HOTA 0.467 on SportsMOT volleyball | labelled benchmark |
-| Ball tracking (VballNet V4c) | 2.7× fewer false jumps than the capstone model on 5 broadcast clips | label-free proxy |
+| Ball tracking (VballNet V4c) | 3.08 false jumps per 100 frames, 68.7% of frames detected on 5 broadcast clips | label-free proxy |
 | 3D trajectory | 0.05 m median error on a synthetic serve | synthetic data |
 | Action recognition (YOLOv11m) | mAP@0.5 0.957 on the test split (same matches as training, so not an unseen-match score) | labelled test split |
 
 | Match review | Tactics board and statistics |
 |---|---|
 | ![Match review](https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/review-app.jpg) | ![Tactics board and statistics](https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/boards-and-stats.png) |
-
-## Capstone version | 專題第一版
-
-VballNet ball tracking, YOLOv11m action recognition, YOLOv8 + Norfair player tracking and a React +
-FastAPI web app. Its landing and in/out calls used fixed pixel thresholds after four manual court clicks;
-the rebuild replaces them with a learned court model.
-
-| Dashboard | Video analysis |
-|---|---|
-| ![Dashboard](dashboard.png) | ![Video analysis](play_sector.png) |
-| **Action detection** | **Player detection** |
-| ![Action boxes](action_boxes.png) | ![Player detection](player_detection(boxes).png) |
 
 ## Team | 團隊
 
