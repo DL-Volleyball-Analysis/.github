@@ -10,6 +10,13 @@ capstone at National Taiwan Ocean University; the system is being rebuilt around
 
 [![Website](https://img.shields.io/badge/Website-VolleyVision-0033A0?style=for-the-badge)](https://dl-volleyball-analysis.github.io/volleyvision-website/)
 [![Code](https://img.shields.io/badge/Code-volleyball--analysis-24292f?style=for-the-badge&logo=github)](https://github.com/DL-Volleyball-Analysis/volleyball-analysis)
+[![Report](https://img.shields.io/badge/Capstone-report-555?style=for-the-badge)](https://github.com/DL-Volleyball-Analysis/capstone-report)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/analysis.gif" width="720" alt="Analysed broadcast clip: ball trail, tracked players, court lines and a top-down court map">
+  <br><sub>Ball trail, player tracks (tracking ids), detected court and the players on a top-down court map, all
+  produced automatically from one broadcast camera.</sub>
+</p>
 
 ## Repositories | 專案
 
@@ -29,11 +36,15 @@ Every number states its kind of evidence. Details: [docs/results](https://github
 
 | Module | Result | Evidence |
 |---|---|---|
-| Action recognition (YOLOv11m) | mAP@0.5 0.945, mAP@0.5:0.95 0.755 | validation split, training log |
+| Court registration (14 keypoints) | 0.49 m median court-position error on held-out images; wrong courts flagged by a floor-net check | labelled test images |
+| Player tracking (YOLO26s + BoT-SORT) | IDF1 0.484, HOTA 0.467 on SportsMOT volleyball | labelled benchmark |
 | Ball tracking (VballNet V4c) | 2.7× fewer false jumps than the capstone model on 5 broadcast clips | label-free proxy |
-| Court registration (14 keypoints) | 0.49 m median court-position error on held-out images | labelled test images |
 | 3D trajectory | 0.05 m median error on a synthetic serve | synthetic data |
-| Player tracking | being measured on SportsMOT volleyball | — |
+| Action recognition (YOLOv11m) | mAP@0.5 0.957 on the test split (same matches as training, so not an unseen-match score) | labelled test split |
+
+| Match review | Tactics board and statistics |
+|---|---|
+| ![Match review](https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/review-app.jpg) | ![Tactics board and statistics](https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/boards-and-stats.png) |
 
 ## Capstone version | 專題第一版
 
