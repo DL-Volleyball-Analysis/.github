@@ -15,7 +15,7 @@ Started as a senior capstone at National Taiwan Ocean University; the system is 
 <p align="center">
   <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/analysis.gif" width="720" alt="Analysed fixed end-line clip: court lines fitted to the painted lines, tracked players, ball trail, a top-down court map and a 3D view">
   <br><sub>One fixed camera behind the end line, analysed automatically: the court fitted to the painted lines, the
-  players by team, the ball trail, a top-down map and a 3D view of the current flight.</sub>
+  players by team, the ball trail, a top-down map and a 3D view of the current flight (USC vs Pepperdine).</sub>
 </p>
 
 ## Repositories | 專案
