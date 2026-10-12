@@ -14,9 +14,13 @@ Started as a senior capstone at National Taiwan Ocean University; the system is 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/analysis.gif" width="720" alt="Analysed fixed end-line clip: court lines fitted to the painted lines, tracked players, ball trail, a top-down court map and a 3D view">
-  <br><sub>One fixed camera behind the end line, analysed automatically: the court fitted to the painted lines, the
-  players by team, the ball trail, a top-down map and a 3D view of the current flight (USC vs Pepperdine).</sub>
+  <br><sub>One fixed camera behind the end line, analysed automatically (GCU vs UCLA): the court fitted to the painted
+  lines (black on this multi-sport floor), the players by team, the ball trail, a top-down map and a 3D view.</sub>
 </p>
+
+| Basketball lines on the floor | Painted-line court | Broadcast view |
+|:---:|:---:|:---:|
+| <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/gallery-basketball-lines.gif" width="250"> | <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/gallery-court-lines.gif" width="250"> | <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/gallery-broadcast.gif" width="250"> |
 
 ## Repositories | 專案
 
