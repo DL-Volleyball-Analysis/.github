@@ -3,8 +3,8 @@
 **基於深度學習的排球比賽分析系統** · *Volleyball Match Analysis System Based on Deep Learning*
 
 Turning one camera's recording of a volleyball match into a reviewable, point-by-point record: the
-ball's path, positions in court metres, player actions, every rally and the score. Started as a senior
-capstone at National Taiwan Ocean University; the system is being rebuilt around measured accuracy.
+ball's path in 2D and 3D, positions in court metres, player actions and shirt numbers, every rally and the score.
+Started as a senior capstone at National Taiwan Ocean University; the system is being rebuilt around measured accuracy.
 
 把一台攝影機錄下的排球比賽，轉成可以逐分檢討的紀錄：球的路徑、場地公尺座標、球員動作、每一個回合與比分。
 
@@ -13,9 +13,9 @@ capstone at National Taiwan Ocean University; the system is being rebuilt around
 [![Report](https://img.shields.io/badge/Capstone-report-555?style=for-the-badge)](https://github.com/DL-Volleyball-Analysis/capstone-report)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/analysis.gif" width="720" alt="Analysed broadcast clip: ball trail, tracked players, court lines and a top-down court map">
-  <br><sub>Ball trail, player tracks (tracking ids), detected court and the players on a top-down court map, all
-  produced automatically from one broadcast camera.</sub>
+  <img src="https://raw.githubusercontent.com/DL-Volleyball-Analysis/volleyball-analysis/main/docs/assets/analysis.gif" width="720" alt="Analysed fixed end-line clip: court lines fitted to the painted lines, tracked players, ball trail, a top-down court map and a 3D view">
+  <br><sub>One fixed camera behind the end line, analysed automatically: the court fitted to the painted lines, the
+  players by team, the ball trail, a top-down map and a 3D view of the current flight.</sub>
 </p>
 
 ## Repositories | 專案
@@ -35,7 +35,7 @@ corrections, and where the code lives now.
 |---|---|
 | [capstone-webapp](https://github.com/DL-Volleyball-Analysis/capstone-webapp) | first web app (FastAPI + React); rewritten as `volleyball-analysis/webapp` |
 | [capstone-action-recognition](https://github.com/DL-Volleyball-Analysis/capstone-action-recognition) | YOLOv11m action recognition; now `training/action-recognition` |
-| [capstone-jersey-numbers](https://github.com/DL-Volleyball-Analysis/capstone-jersey-numbers) | YOLOv8 jersey digits; mislabelled training data found, retraining planned |
+| [capstone-jersey-numbers](https://github.com/DL-Volleyball-Analysis/capstone-jersey-numbers) | YOLOv8 jersey digits; mislabelled training data found and retrained (now in `volleyball-analysis`) |
 | [capstone-court-detection](https://github.com/DL-Volleyball-Analysis/capstone-court-detection) | landing and IN/OUT with a hand-marked court; replaced by learned court registration |
 | [capstone-prototype](https://github.com/DL-Volleyball-Analysis/capstone-prototype) | early prototype adapted from VolleyVision |
 
@@ -45,11 +45,13 @@ Every number states its kind of evidence. Details: [docs/results](https://github
 
 | Module | Result | Evidence |
 |---|---|---|
-| Court registration (14 keypoints) | 0.49 m median court-position error on held-out images; wrong courts flagged by a floor-net check | labelled test images |
-| Player tracking (YOLO26s + BoT-SORT) | IDF1 0.484, HOTA 0.467 on SportsMOT volleyball | labelled benchmark |
-| Ball tracking (VballNet V4c) | 3.08 false jumps per 100 frames, 68.7% of frames detected on 5 broadcast clips | label-free proxy |
-| 3D trajectory | 0.05 m median error on a synthetic serve | synthetic data |
-| Action recognition (YOLOv11m) | mAP@0.5 0.957 on the test split (same matches as training, so not an unseen-match score) | labelled test split |
+| Court registration | 0.10 m median court-position error on held-out broadcast clips, 0.49 m on held-out gym images. Fixed end-line cameras, where both keypoint models fail: the court fitted to the painted lines of an empty-court background plate is right in all six test arenas, and the net tape gives the focal length for 3D | labelled test images; fixed clips by eye |
+| Player tracking (YOLO26s fine-tuned to box players only + BoT-SORT) | IDF1 0.690, precision 0.970 on SportsMOT volleyball (from 0.484 / 0.614) | labelled benchmark |
+| Ball detection | WASB fine-tuned on broadcast + gym data: F1 0.942 (10 px) on held-out gym matches, against 0.859 for VballNet V4c and 0.527 for WASB's published weights | labelled test matches |
+| 3D trajectory | player-anchored ballistic fit: attack error 0.76 → 0.31 m, set 0.29 → 0.12 m (median) with realistic detection errors | synthetic data |
+| Action recognition | per-player classifier weighted by the ball's position: macro F1 0.678 on 16 unseen matches of the Volleyball dataset (capstone detector: 0.303) | labelled benchmark |
+| Shirt numbers | digit mAP@0.5 0.824 on teams the model never saw | labelled test split |
+| Rally detection | F1 0.742 on two held-out broadcast matches (ball only: 0.423); fixed cameras: labels read from the on-screen score (77 points on six clips, 2 missed) for a fixed-camera model in progress | labelled matches |
 
 | Match review | Tactics board and statistics |
 |---|---|
