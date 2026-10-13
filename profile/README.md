@@ -28,7 +28,7 @@ Started as a senior capstone at National Taiwan Ocean University; the system is 
 |---|---|
 | [volleyball-analysis](https://github.com/DL-Volleyball-Analysis/volleyball-analysis) | all code: the `vball` analysis package, the web app (`webapp/`), training code (`training/`), notebooks, requirements (PRD), specifications (OpenSpec) and measurements |
 | [volleyvision-website](https://github.com/DL-Volleyball-Analysis/volleyvision-website) | public landing page |
-| [capstone-report](https://github.com/DL-Volleyball-Analysis/capstone-report) | capstone report (LaTeX, Chinese and English); graded version under the `capstone-final` tag |
+| [capstone-report](https://github.com/DL-Volleyball-Analysis/capstone-report) | capstone report (LaTeX, Chinese and English) as graded (`capstone-final` tag), with errata and the later work's current results |
 
 ### Capstone archive (read-only)
 
@@ -52,10 +52,14 @@ Every number states its kind of evidence. Details: [docs/results](https://github
 | Court registration | 0.10 m median court-position error on held-out broadcast clips, 0.49 m on held-out gym images. Fixed end-line cameras, where both keypoint models fail: the court fitted to the painted lines of an empty-court background plate is right in all six test arenas, and the net tape gives the focal length for 3D | labelled test images; fixed clips by eye |
 | Player tracking (YOLO26s fine-tuned to box players only + BoT-SORT) | IDF1 0.690, precision 0.970 on SportsMOT volleyball (from 0.484 / 0.614) | labelled benchmark |
 | Ball detection | WASB fine-tuned on broadcast + gym data: F1 0.942 (10 px) on held-out gym matches, against 0.859 for VballNet V4c and 0.527 for WASB's published weights | labelled test matches |
-| 3D trajectory | player-anchored ballistic fit: attack error 0.76 → 0.31 m, set 0.29 → 0.12 m (median) with realistic detection errors | synthetic data |
+| 3D trajectory | player-anchored ballistic fit: attack error 0.76 → 0.31 m, set 0.29 → 0.12 m (median) with realistic detection errors; on fixed end-line clips 68–187 flights per 3 minutes pass the physical checks | synthetic data; system checks |
 | Action recognition | per-player classifier weighted by the ball's position: macro F1 0.678 on 16 unseen matches of the Volleyball dataset (capstone detector: 0.303) | labelled benchmark |
 | Shirt numbers | digit mAP@0.5 0.824 on teams the model never saw | labelled test split |
-| Rally detection | F1 0.742 on two held-out broadcast matches (ball only: 0.423); fixed cameras: labels read from the on-screen score (77 points on six clips, 2 missed) for a fixed-camera model in progress | labelled matches |
+| Rally detection | F1 0.742 on two held-out broadcast matches (ball only: 0.423); fixed end-line cameras: a model trained on labels read from the on-screen score reaches F1 0.76 on six clips of other matches and runs in the pipeline | labelled matches |
+
+**Engineering.** Spec-first development (PRD + OpenSpec), one package per concern, CI on Python 3.14 and 3.12 with lint,
+types, tests under a coverage gate and dependency audits, pinned dependencies, a model manifest with checksums, Docker
+Compose, and decision records; first release [v0.1.0](https://github.com/DL-Volleyball-Analysis/volleyball-analysis/releases/tag/v0.1.0).
 
 | Match review | Tactics board and statistics |
 |---|---|
