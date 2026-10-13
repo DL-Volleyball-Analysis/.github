@@ -49,7 +49,7 @@ Every number states its kind of evidence. Details: [docs/results](https://github
 
 | Module | Result | Evidence |
 |---|---|---|
-| Court registration | 0.10 m median court-position error on held-out broadcast clips, 0.49 m on held-out gym images. Fixed end-line cameras, where both keypoint models fail: the court fitted to the painted lines of an empty-court background plate is right in all six test arenas, and the net tape gives the focal length for 3D | labelled test images; fixed clips by eye |
+| Court registration | 0.10 m median court-position error on held-out broadcast clips, 0.49 m on held-out gym images. Fixed end-line cameras, where both keypoint models fail: the court fitted to the painted lines of an empty-court background plate is right to 2–6 cm on five of six clips (hand-labelled floor points; the sixth is 1.06 m off), and the net tape gives the focal length for 3D | labelled test images; labelled floor points |
 | Player tracking (YOLO26s fine-tuned to box players only + BoT-SORT) | IDF1 0.690, precision 0.970 on SportsMOT volleyball (from 0.484 / 0.614) | labelled benchmark |
 | Ball detection | WASB fine-tuned on broadcast + gym data: F1 0.942 (10 px) on held-out gym matches, against 0.859 for VballNet V4c and 0.527 for WASB's published weights | labelled test matches |
 | 3D trajectory | player-anchored ballistic fit: attack error 0.76 → 0.31 m, set 0.29 → 0.12 m (median) with realistic detection errors; on fixed end-line clips 68–187 flights per 3 minutes pass the physical checks | synthetic data; system checks |
